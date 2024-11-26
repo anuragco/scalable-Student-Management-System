@@ -42,14 +42,14 @@ export default function Dashboard() {
             }
         });
 
-        if (response.status === 401) {
+        // if (response.status === 401) {
             
-            localStorage.clear();
+        //     localStorage.clear();
             
-            navigate('/');
+        //     navigate('/');
             
-            return; 
-        }
+        //     return; 
+        // }
 
 
         

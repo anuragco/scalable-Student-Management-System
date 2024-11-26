@@ -20,10 +20,10 @@ app.get("/api/test", (req, res) => {
 });
 
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "",
-  port: 4306,
+  host: "database-1.c76ew6kw8abd.ap-south-1.rds.amazonaws.com",
+  user: "admin",
+  password: "123#sinGH#",
+  port: 3306,
   database: "studentmanagement",
   connectionLimit: 10,
   waitForConnections: true,
@@ -1289,6 +1289,18 @@ app.post('/grade-students', async (req, res) => {
     });
   }
 });
+
+
+app.get('/test',  (req, res)=> {
+  const sql = "SELECT * FROM students "
+
+  pool.query(sql, (err,results)=>{
+    if(err) {
+      return res.status(500).json({error: err.message});
+    }
+    res.status(200).json({results: results});
+  })
+})
 app.listen(port, () => {
   console.log("listening on port 5000");
 });
