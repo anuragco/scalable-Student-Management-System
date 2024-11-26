@@ -41,6 +41,18 @@ export default function Dashboard() {
                 'Authorization': `Bearer ${token}`
             }
         });
+
+        if (response.status === 401) {
+            
+            localStorage.clear();
+            
+            navigate('/');
+            
+            return; 
+        }
+
+
+        
             if (!response.ok) {
                 throw new Error('Failed to fetch dashboard data');
             }
