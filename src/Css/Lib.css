@@ -1,0 +1,182 @@
+.library-page {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+  }
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .left-section h1 {
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  
+  .left-section p {
+    color: #666;
+    margin: 0.5rem 0 0 0;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+  }
+  
+  .add-button:hover {
+    background-color: #45a049;
+  }
+  
+  .search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    width: 300px;
+  }
+  
+  .search-box input {
+    border: none;
+    margin-left: 0.5rem;
+    outline: none;
+    width: 100%;
+  }
+  
+  .export-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .export-button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .table-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    overflow-x: auto; 
+    margin-top: 1rem;
+    padding: 1rem; 
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; 
+  }
+  
+  .table th,
+  .table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Allows text to wrap within cells */
+    overflow: hidden; /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds ellipsis for overflowing text */
+    white-space: nowrap; /* Prevents wrapping for a cleaner look */
+  }
+  
+  .table th {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .table td {
+    background-color: #f9f9f9;
+    color: #333;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #e8f5e9; /* Soft green for hover effect */
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f7f7f7;
+  }
+  
+  .table th:first-child,
+  .table td:first-child {
+    text-align: center; /* Center-align the first column */
+    width: 50px; /* Fixed width for the first column */
+  }
+  
+  .table th:last-child,
+  .table td:last-child {
+    text-align: center; /* Center-align the last column */
+    width: 100px; /* Fixed width for action buttons or similar */
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .pagination button {
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .pagination button:hover {
+    background-color: #45a049;
+  }
+  
+  .pagination button[disabled] {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 768px) {
+    .table-container {
+      padding: 0.5rem; /* Reduced padding for smaller screens */
+    }
+  
+    .table th,
+    .table td {
+      font-size: 0.8rem; /* Smaller font size for compact view */
+      padding: 0.5rem;
+    }
+  
+    .pagination {
+      flex-wrap: wrap; /* Adjust pagination layout for small screens */
+    }
+  }
+  

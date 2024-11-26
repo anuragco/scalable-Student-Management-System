@@ -1,0 +1,183 @@
+.dashboard {
+    min-height: 100vh;
+    background-color: #f5f6fa;
+    width: 100vw;
+  }
+  
+  .navbar {
+    background-color: white;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .notification-badge {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .main-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  
+  .sidebar {
+    width: 240px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    color: #4a5568;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  
+  .menu-item:hover {
+    background-color: #f7fafc;
+  }
+  
+  .menu-item.active {
+    background-color: #ebf5ff;
+    color: #2b6cb0;
+  }
+  
+  .content {
+    flex: 1;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .stat-card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .stat-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .icon-container {
+    padding: 0.75rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .students-icon { background-color: #ebf5ff; color: #2b6cb0; }
+  .books-icon { background-color: #f0fff4; color: #2f855a; }
+  .attendance-icon { background-color: #faf5ff; color: #6b46c1; }
+  .fees-icon { background-color: #fffaf0; color: #c05621; }
+  
+  .stat-title {
+    font-size: 0.875rem;
+    color: #718096;
+  }
+  
+  .stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a202c;
+  }
+  
+  .recent-activity {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .activity-header {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin-bottom: 1rem;
+  }
+  
+  .activity-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #edf2f7;
+  }
+  
+  .activity-item:last-child {
+    border-bottom: none;
+  }
+  
+  .activity-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 1rem;
+  }
+  
+  .dot-green { background-color: #48bb78; }
+  .dot-blue { background-color: #4299e1; }
+  .dot-yellow { background-color: #ecc94b; }
+  
+  .activity-text {
+    flex: 1;
+    font-size: 0.875rem;
+    color: #4a5568;
+  }
+  
+  .activity-time {
+    font-size: 0.75rem;
+    color: #a0aec0;
+  }

@@ -1,0 +1,341 @@
+.students-page {
+    padding: 2rem;
+    background: #fff;
+    height: 100vh;
+    width: 98vw;
+  }
+  
+  
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    margin-left: 50px;
+  }
+  
+  .left-section h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a202c;
+    margin-bottom: 0.5rem;
+  }
+  
+  .left-section p {
+    color: #718096;
+    font-size: 0.875rem;
+  }
+  
+  .add-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #3182ce;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .add-button:hover {
+    background-color: #2c5282;
+  }
+  
+  /* Search Section */
+  .search-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+    margin-left: 50px;
+  }
+  
+  .search-box {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    flex: 1;
+    max-width: 400px;
+  }
+  
+  .search-box input {
+    border: none;
+    outline: none;
+    margin-left: 0.5rem;
+    width: 100%;
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .export-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    background-color: white;
+    color: #4a5568;
+    cursor: pointer;
+  }
+  
+  .export-button:hover {
+    background-color: #f7fafc;
+  }
+  
+  
+  .table-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+    margin-left: 50px;
+  }
+  
+  .students-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+  }
+  
+  .students-table th {
+    background-color: #f7fafc;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #4a5568;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .students-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.active {
+    background-color: #c6f6d5;
+    color: #2f855a;
+  }
+  
+  .status-badge.inactive {
+    background-color: #fed7d7;
+    color: #c53030;
+  }
+  
+  /* Actions Menu */
+  .actions-cell {
+    position: relative;
+  }
+  
+  .actions-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .action-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+  }
+  
+  .action-button:hover {
+    background-color: #f7fafc;
+  }
+  
+  .action-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: white;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    z-index: 10;
+    min-width: 200px;
+  }
+  
+  .action-menu button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: none;
+    text-align: left;
+    color: #4a5568;
+    cursor: pointer;
+  }
+  
+  .action-menu button:hover {
+    background-color: #f7fafc;
+  }
+  
+  /* Modal Styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+  }
+  
+  .modal {
+    background-color: white;
+    border-radius: 0.5rem;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1a202c;
+  }
+  
+  .modal-header button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #718096;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4a5568;
+  }
+  
+  .form-group input {
+    padding: 0.5rem;
+    border: 1
+}
+
+.submit-button{
+    padding: 10px;
+    width: 100px;
+    background: rgb(82, 243, 42);
+    color: #fff;
+    border-radius: 10px;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+.cancel-btn{
+    padding: 10px;
+    width: 100px;
+    background: rgb(236, 4, 4);
+    color: #fff;
+    border-radius: 10px;
+    outline: 0;
+    border: 0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    margin-right: 10px;
+}
+
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.dark-mode .settings-page {
+  background-color: #1e1e1e;
+}
+
+.dark-mode .settings-container {
+  background-color: #2c2c2c;
+}
+
+.dark-mode .settings-sidebar {
+  background-color: #242424;
+  border-right: 1px solid #3a3a3a;
+}
+
+.dark-mode .settings-nav-item {
+  color: #e0e0e0;
+}
+
+.dark-mode .settings-nav-item.active {
+  background-color: #3a3a3a;
+  color: #ffffff;
+}
+
+.dark-mode .setting-group {
+  background-color: #353535;
+  border: 1px solid #4a4a4a;
+}
+
+.dark-mode .setting-item {
+  color: #e0e0e0;
+}
+
+.dark-mode button {
+  background-color: #4a4a4a;
+  color: #ffffff;
+  border: 1px solid #666;
+}
+
+.dark-mode .toggle-switch input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+  
+}
+
+.dark-mode .some-specific-element {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
