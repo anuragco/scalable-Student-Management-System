@@ -28,7 +28,36 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   waitForConnections: true,
   queueLimit: 0,
+  connectTimeout: 10000, 
+  acquireTimeout: 10000, 
+
 });
+
+
+pool.getConnection((err, connection) => {
+  if (err) {
+    console.error('Database Connection Error Details:', {
+      message: err.message,
+      code: err.code,
+      errno: err.errno,
+      sqlState: err.sqlState,
+      fatal: err.fatal
+    });
+
+    // Additional diagnostic information
+    console.error('Connection Parameters:', {
+      host: pool.config.connectionConfig.host,
+      user: pool.config.connectionConfig.user,
+      database: pool.config.connectionConfig.database
+    });
+  } else {
+    console.log('Database Connection Successful');
+    // Always release the connection back to the pool
+    connection.release();
+  }
+});
+
+
 
 app.post("/v2/api/login", (req, res) => {
   const { email, password } = req.body;
