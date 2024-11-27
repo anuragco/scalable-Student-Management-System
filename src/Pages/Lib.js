@@ -35,7 +35,7 @@ const LibraryPage = () => {
   // Fetch books data from API
   useEffect(() => {
     const fetchBooks = async () => {
-      const response = await axios.get('http://15.207.102.222:5000/api/books');
+      const response = await axios.get('http://3.110.25.152:5000/api/books');
       setBooks(response.data);
     };
 
@@ -50,7 +50,7 @@ const LibraryPage = () => {
 
   const handleAddBook = async (e) => {
     e.preventDefault();
-    const response = await axios.post('http://15.207.102.222:5000/api/books', newBook);
+    const response = await axios.post('http://3.110.25.152:5000/api/books', newBook);
     setBooks([...books, response.data]);
     setShowAddModal(false);
     setNewBook({
@@ -68,14 +68,14 @@ const LibraryPage = () => {
 
   const handleEditBook = async (e) => {
     e.preventDefault();
-    const response = await axios.put(`http://15.207.102.222:5000/api/books/${selectedBook.id}`, selectedBook);
+    const response = await axios.put(`http://3.110.25.152:5000/api/books/${selectedBook.id}`, selectedBook);
     setBooks(books.map(book => (book.id === selectedBook.id ? response.data : book)));
     setShowEditModal(false);
     setSelectedBook(null);
   };
 
   const handleDeleteBook = async (id) => {
-    await axios.delete(`http://15.207.102.222:5000/api/books/${id}`);
+    await axios.delete(`http://3.110.25.152:5000/api/books/${id}`);
     setBooks(books.filter(book => book.id !== id));
     setShowActionMenu(null);
   };

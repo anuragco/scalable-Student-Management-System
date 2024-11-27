@@ -783,7 +783,7 @@ app.post('/v2/api/payment/assign-due/:id', (req, res) => {
 });
 
 
-// Search students endpoint
+
 app.get('/v2/api/students/search', (req, res) => {
   const { query } = req.query;
   

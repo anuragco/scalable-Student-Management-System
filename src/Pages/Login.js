@@ -18,7 +18,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post('http://15.207.102.222:5000/v2/api/login', { email, password });
+      const response = await axios.post('http://3.110.25.152:5000/v2/api/login', { email, password });
 
       if (response.data.token && response.data.jwt) {
         // Store the tokens in localStorage

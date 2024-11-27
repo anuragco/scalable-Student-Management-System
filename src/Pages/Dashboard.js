@@ -34,7 +34,7 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
         try {
             const token = localStorage.getItem('authToken'); 
-        const response = await fetch('http://15.207.102.222:5000/v2/api/details', {
+        const response = await fetch('http://3.110.25.152:5000/v2/api/details', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,14 +42,14 @@ export default function Dashboard() {
             }
         });
 
-        // if (response.status === 401) {
+        if (response.status === 401) {
             
-        //     localStorage.clear();
+            localStorage.clear();
             
-        //     navigate('/');
+            navigate('/');
             
-        //     return; 
-        // }
+            return; 
+        }
 
 
         

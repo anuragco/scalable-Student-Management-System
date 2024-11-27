@@ -82,7 +82,7 @@ export default function StudentsPage() {
     };
   
     try {
-      const response = await fetch('http://15.207.102.222:5000/v2/api/student', {
+      const response = await fetch('http://3.110.25.152:5000/v2/api/student', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(studentData),
@@ -117,7 +117,7 @@ export default function StudentsPage() {
     const fetchStudents = async () => {
       try {
         const authToken = localStorage.getItem('authToken');
-        const response = await fetch('http://15.207.102.222:5000/v2/api/list/student', {
+        const response = await fetch('http://3.110.25.152:5000/v2/api/list/student', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ auth: authToken }),

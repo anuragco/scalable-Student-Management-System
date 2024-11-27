@@ -11,7 +11,7 @@ const AttendancePage = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await fetch('http://15.207.102.222:5000/v2/api/attendence/list');
+        const response = await fetch('http://3.110.25.152:5000/v2/api/attendence/list');
         const data = await response.json();
         // Ensure each student has a 'present' property initialized to false
         setStudents(data.students.map(student => ({
@@ -56,7 +56,7 @@ const AttendancePage = () => {
         present: student.present ? 1 : 0, 
       }));
 
-      const response = await fetch('http://15.207.102.222:5000/update-attendance', {
+      const response = await fetch('http://3.110.25.152:5000/update-attendance', {
         method: 'POST',  
         headers: {
           'Content-Type': 'application/json',
