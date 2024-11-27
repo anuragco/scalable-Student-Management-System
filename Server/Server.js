@@ -28,35 +28,46 @@ const pool = mysql.createPool({
   connectionLimit: 10,
   waitForConnections: true,
   queueLimit: 0,
-  connectTimeout: 10000, 
-  acquireTimeout: 10000, 
-
+  connectTimeout: 30000,  // Increased timeout
+  acquireTimeout: 30000,  // Increased timeout
+  timeout: 60000,         // Additional timeout setting
+  
+  // Add these for better error handling and connection management
+  socketPath: undefined,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 
 pool.getConnection((err, connection) => {
   if (err) {
-    console.error('Database Connection Error Details:', {
+    console.error('Detailed Database Connection Error:', {
       message: err.message,
       code: err.code,
       errno: err.errno,
       sqlState: err.sqlState,
-      fatal: err.fatal
+      fatal: err.fatal,
+      stack: err.stack
     });
 
-    // Additional diagnostic information
-    console.error('Connection Parameters:', {
+    // Log connection parameters for verification
+    console.log('Connection Parameters:', {
       host: pool.config.connectionConfig.host,
       user: pool.config.connectionConfig.user,
-      database: pool.config.connectionConfig.database
+      database: pool.config.connectionConfig.database,
+      port: pool.config.connectionConfig.port
     });
   } else {
     console.log('Database Connection Successful');
-    // Always release the connection back to the pool
     connection.release();
   }
 });
 
+// Global error handler
+pool.on('error', (err) => {
+  console.error('Unexpected Database Pool Error:', err);
+});
 
 
 app.post("/v2/api/login", (req, res) => {
