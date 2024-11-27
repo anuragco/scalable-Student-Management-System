@@ -1,4 +1,4 @@
-const pool = require("../database/dbconfig");
+const pool = require("../Database/dbconfig");
 
 const verifyAuth = (req, res, next) => {
     try {
