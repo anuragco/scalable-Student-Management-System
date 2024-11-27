@@ -38,7 +38,7 @@ const FeePage = () => {
   const fetchFeeDetails = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:5000/v2/api/payment/due');
+      const response = await axios.get('http://15.207.102.222:5000/v2/api/payment/due');
       
       const transformedData = response.data.data.map(item => ({
         id: item.id,

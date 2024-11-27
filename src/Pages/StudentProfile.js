@@ -127,7 +127,7 @@ const StudentProfile = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:5000/v2/api/profile/student?regno=${regNo}`);
+        const response = await fetch(`http://15.207.102.222:5000/v2/api/profile/student?regno=${regNo}`);
         
         if (response.ok) {
           const data = await response.json();

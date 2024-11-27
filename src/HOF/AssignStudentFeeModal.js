@@ -21,7 +21,7 @@ const AssignStudentFeeModal = ({ onClose, onSuccess }) => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/v2/api/students/search?query=${searchQuery}`);
+      const response = await axios.get(`http://15.207.102.222:5000/v2/api/students/search?query=${searchQuery}`);
       setStudents(response.data.data);
     } catch (err) {
       console.error('Error fetching students:', err);
@@ -48,7 +48,7 @@ const AssignStudentFeeModal = ({ onClose, onSuccess }) => {
       }
 
       const response = await axios.post(
-        `http://localhost:5000/v2/api/payment/assign-new-fee`,
+        `http://15.207.102.222:5000/v2/api/payment/assign-new-fee`,
         {
           student_id: selectedStudent.id,
           tuition_fee: parseFloat(dueDetails.tuitionFee) || 0,

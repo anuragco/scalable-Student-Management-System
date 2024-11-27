@@ -28,7 +28,7 @@ const AssignDueModal = ({ student, onClose, onSuccess }) => {
       }
 
       const response = await axios.post(
-        `http://localhost:5000/v2/api/payment/assign-due/${student.id}`,
+        `http://15.207.102.222:5000/v2/api/payment/assign-due/${student.id}`,
         {
           tuition_fee: parseFloat(dueDetails.tuitionFee) || 0,
           library_fee: parseFloat(dueDetails.libraryFee) || 0,

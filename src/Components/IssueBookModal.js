@@ -16,7 +16,7 @@ const IssueBookModal = ({ student, isOpen, onClose }) => {
 
   const fetchAvailableBooks = async () => {
     try {
-      const response = await fetch('http://localhost:5000/v2/api/list/books', {
+      const response = await fetch('http://15.207.102.222:5000/v2/api/list/books', {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -48,7 +48,7 @@ const IssueBookModal = ({ student, isOpen, onClose }) => {
         issueDate: new Date().toISOString()
       };
 
-      const response = await fetch('http://localhost:5000/v2/api/issue/books', {
+      const response = await fetch('http://15.207.102.222:5000/v2/api/issue/books', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(issueData)

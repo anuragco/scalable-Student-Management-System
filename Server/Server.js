@@ -8,7 +8,7 @@ const app = express();
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
 const { exec } = require('child_process');
-const verifyAuth = require('./Middleware/verifyadmin');
+const verifyAuth = require('./Middleware/Verifyadmin');
 const path = require('path');
 
 app.use(express.json());
