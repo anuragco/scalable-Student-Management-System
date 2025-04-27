@@ -13,7 +13,7 @@ const ReturnBookModal = ({ student, isOpen, onClose }) => {
 
   const fetchIssuedBooks = async () => {
     try {
-      const response = await fetch(`http://3.110.25.152:5000/v2/api/student/${student.id}/issued-books`, {
+      const response = await fetch(`http://localhost:5000/v2/api/student/${student.id}/issued-books`, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -46,7 +46,7 @@ const ReturnBookModal = ({ student, isOpen, onClose }) => {
         returnUrl: '/students'
       };
 
-      const response = await fetch('http://3.110.25.152:5000/v2/api/return/books', {
+      const response = await fetch('http://localhost:5000/v2/api/return/books', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(returnData)

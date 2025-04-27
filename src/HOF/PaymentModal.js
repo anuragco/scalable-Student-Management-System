@@ -27,7 +27,7 @@ const PaymentModal = ({ student, onClose, onPaymentSuccess }) => {
 
       
       const response = await axios.put(
-        `http://3.110.25.152:5000/v2/api/payment/update/${student.id}`,
+        `http://localhost:5000/v2/api/payment/update/${student.id}`,
         { amount_paid: paymentAmount }
       );
 

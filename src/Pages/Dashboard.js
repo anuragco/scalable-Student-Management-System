@@ -34,7 +34,7 @@ export default function Dashboard() {
     const fetchDashboardData = async () => {
         try {
             const token = localStorage.getItem('authToken'); 
-        const response = await fetch('http://3.110.25.152:5000/v2/api/details', {
+        const response = await fetch('http://localhost:5000/v2/api/details', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

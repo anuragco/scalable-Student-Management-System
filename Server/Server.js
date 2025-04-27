@@ -10,20 +10,21 @@ const { v4: uuidv4 } = require("uuid");
 const { exec } = require('child_process');
 const verifyAuth = require('./Middleware/Verifyadmin');
 const path = require('path');
-
+const {redisClient , connectRedis} = require('./Cache/RedisCache')
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
+connectRedis();
 
 app.get("/api/test", (req, res) => {
   res.send("hello");
 });
 
 const pool = mysql.createPool({
-  host: "database-1.c76ew6kw8abd.ap-south-1.rds.amazonaws.com",
-  user: "admin",
-  password: "123#sinGH#",
-  port: 3306,
+  host: "localhost",
+  user: "root",
+  password: "",
+  port: 4306,
   database: "studentmanagement",
   connectionLimit: 10,
   waitForConnections: true,
@@ -31,10 +32,7 @@ const pool = mysql.createPool({
   connectTimeout: 30000,  
   acquireTimeout: 30000,  
   timeout: 60000,         
-  socketPath: undefined,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  
 });
 
 
@@ -614,38 +612,53 @@ app.get("/v2/api/details", verifyAuth, (req, res) => {
   }
 });
 
-
-app.get("/v2/api/details", (req, res) => {
+app.get("/v2/api/details", async (req, res) => {
   try {
-    pool.query("SELECT COUNT(*) as present_count FROM attendance WHERE present = 1", 
+    const cacheKey = "attendance_data";
+
+    // Check if data is already in Redis cache
+    const cachedData = await redisClient.get(cacheKey);
+    if (cachedData) {
+      console.log("Cache hit for attendance data");
+      return res.status(200).json(JSON.parse(cachedData));
+    }
+
+    console.log("Cache miss for attendance data, querying database...");
+
+    
+    pool.query(
+      "SELECT COUNT(*) as present_count FROM attendance WHERE present = 1",
       (err, presentResults) => {
         if (err) return res.status(500).json({ message: err.message });
-        
+
         const presentCount = presentResults[0].present_count;
 
-        pool.query("SELECT COUNT(*) as total_count FROM attendance", 
-          (err, totalResults) => {
-            if (err) return res.status(500).json({ message: err.message });
-            
-            const totalCount = totalResults[0].total_count;
+        pool.query("SELECT COUNT(*) as total_count FROM attendance", (err, totalResults) => {
+          if (err) return res.status(500).json({ message: err.message });
 
-            // Use C program 
-            exec(`../HOF/student_calc attendance ${totalCount} ${presentCount}`, 
-              (error, stdout) => {
-                if (error) {
-                  console.error('Error:', error);
-                  return res.status(500).json({ message: "Error calculating attendance" });
-                }
+          const totalCount = totalResults[0].total_count;
 
-                try {
-                  const attendanceData = JSON.parse(stdout);
-                  res.status(200).json(attendanceData);
-                } catch (e) {
-                  res.status(500).json({ message: "Error parsing attendance data" });
-                }
-            });
+          
+          exec(`../HOF/student_calc attendance ${totalCount} ${presentCount}`, (error, stdout) => {
+            if (error) {
+              console.error("Error:", error);
+              return res.status(500).json({ message: "Error calculating attendance" });
+            }
+
+            try {
+              const attendanceData = JSON.parse(stdout);
+
+              
+              redisClient.set(cacheKey, JSON.stringify(attendanceData), "EX", 3600); 
+
+              res.status(200).json(attendanceData);
+            } catch (e) {
+              res.status(500).json({ message: "Error parsing attendance data" });
+            }
+          });
         });
-    });
+      }
+    );
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
